@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ConcatMedia (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "ConcatMedia (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
