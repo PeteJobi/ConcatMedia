@@ -18,6 +18,8 @@ You can also just download the release builds if you don't wish to build manuall
 ## How to use
 When you open the program, you will be prompted to upload media files. Once that is done, you will be taken to the concat interface page. All the files you selected will be shown in a list in alphabetical order. You can delete individual files, and you can also upload more files. You can also drag and drop files in the list to rearrange them. When you're done setting up, click the **Concat** button to start the merge process.
 
+If the files are numbered with their names ending in 3-letter digits starting with "000" or "001", the output file will be named the same as the first file without the numbering. Otherwise, the output file will be named the same as the first file with a "_MERGED" suffix added. i.e, if you merge files "video001.mp4" and "video002.mp4", the output file will be named "video.mp4", and if you merge files "Ade's solo.mkv" and "Tolu's solo.mkv", the file will be named "Ade's solo_MERGED.mkv". The output file will be saved in the same folder as the first file.
+
 It's important to note that the files you try to merge must be of similar types. They have to be of the same file extension (.mp4 and .mkv won't work). They must have the same codec parameters (e.g same framerate and resolution for video, same sample rate and channel layout for audio). They must have the same number of tracks/streams (a video with 1 audio track cannot be merged with one with 2 audio tracks).
 
 This program is suited to merge files that have been cut up into chunks with programs like [VideoSplitter](https://github.com/PeteJobi/VideoSplitter).
