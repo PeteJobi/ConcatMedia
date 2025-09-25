@@ -9,7 +9,7 @@
 
   <Identity
     Name="de784618-a5d7-4e8a-a418-ef7297cec58f"
-    Publisher="CN=Peter Egunjobi"
+    Publisher="CN=PIE Softwares"
     Version="1.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="de784618-a5d7-4e8a-a418-ef7297cec58f" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
@@ -34,13 +34,14 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="ConcatMedia"
-        Description="ConcatMedia"
+        DisplayName="Concat Media"
+        Description="Merge media files of the same kind together."
         BackgroundColor="transparent"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" />
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"  Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:LockScreen BadgeLogo="Assets\BadgeLogo.png" Notification="badgeAndTileText"/>
       </uap:VisualElements>
     </Application>
   </Applications>
