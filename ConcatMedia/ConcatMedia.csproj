@@ -81,4 +81,5 @@
     <PackageCertificateKeyFile>ConcatMedia_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <Import Project="..\ConcatMediaPageWinUI\ConcatMediaPage.projitems" Label="Shared" />
+  <Import Project="..\WinUIShared\WinUIShared.projitems" Label="Shared" />
 </Project>
