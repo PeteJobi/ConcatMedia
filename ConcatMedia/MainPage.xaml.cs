@@ -38,7 +38,7 @@ namespace ConcatMedia
             }
         }
 
-        private async void GoToConcat()
+        private async void GoToConcat(IEnumerable<string> mediaPaths)
         {
             try
             {
@@ -56,7 +56,7 @@ namespace ConcatMedia
                     await ErrorDialog.ShowAsync();
                     return;
                 }
-                Frame.Navigate(typeof(ConcatMediaPage.ConcatMediaPage), new ConcatProps() { FfmpegPath = ffmpegPath, MediaPaths = [], TypeToNavigateTo = typeof(MainPage).FullName });
+                Frame.Navigate(typeof(ConcatMediaPage.ConcatMediaPage), new ConcatProps() { FfmpegPath = ffmpegPath, MediaPaths = mediaPaths, TypeToNavigateTo = typeof(MainPage).FullName });
             }
             catch (Exception ex)
             {
@@ -68,7 +68,7 @@ namespace ConcatMedia
 
         private void MainPage_OnLoaded(object sender, RoutedEventArgs e)
         {
-            GoToConcat();
+            GoToConcat([]);
         }
     }
 }
