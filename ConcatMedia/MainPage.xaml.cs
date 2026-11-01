@@ -26,49 +26,39 @@ namespace ConcatMedia
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private TitleBar _titleBar;
+        private string? _ffmpegPath;
+        private readonly EventHandler<IList<string>> _filesDropped;
+        private readonly EventHandler<string> _ffmpegSet;
+        public readonly string[] supportedTypes = ConcatMediaPage.ConcatMediaPage.AllSupportedTypes;
+
         public MainPage()
         {
             InitializeComponent();
+            _filesDropped = (_, paths) => GoToConcat(paths);
+            _ffmpegSet = (_, path) => _ffmpegPath = path;
         }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            if (e.Parameter is TitleBar titleBar)
+            {
+                _titleBar = titleBar;
+                return;
+            }
+            _titleBar.IsBackButtonVisible = false;
+
             if (e.Parameter is string outputFile)
             {
                 Console.WriteLine($"Path of output file is {outputFile}");
             }
         }
 
-        private async void GoToConcat(IEnumerable<string> mediaPaths)
+        private void GoToConcat(IEnumerable<string> mediaPaths)
         {
-            try
-            {
-                string ffmpegPath;
-                try
-                {
-                    ffmpegPath = Path.Join(Package.Current.InstalledLocation.Path, "Assets/ffmpeg.exe");
-                }
-                catch (InvalidOperationException)
-                {
-                    ffmpegPath = "Assets/ffmpeg.exe";
-                }
-                if (!File.Exists(ffmpegPath))
-                {
-                    await ErrorDialog.ShowAsync();
-                    return;
-                }
-                Frame.Navigate(typeof(ConcatMediaPage.ConcatMediaPage), new ConcatProps() { FfmpegPath = ffmpegPath, MediaPaths = mediaPaths, TypeToNavigateTo = typeof(MainPage).FullName });
-            }
-            catch (Exception ex)
-            {
-                ErrorDialog.Content = $"An error occurred while navigating to the concat media page: {ex.Message}";
-                await ErrorDialog.ShowAsync();
-                System.Diagnostics.Debug.WriteLine($"Error navigating to ConcatMediaPage: {ex.Message}");
-            }
-        }
-
-        private void MainPage_OnLoaded(object sender, RoutedEventArgs e)
-        {
-            GoToConcat([]);
+            if (_ffmpegPath == null) return;
+            Frame.Navigate(typeof(ConcatMediaPage.ConcatMediaPage), new ConcatProps { FfmpegPath = _ffmpegPath, MediaPaths = mediaPaths, TypeToNavigateTo = typeof(MainPage).FullName });
+            _titleBar.IsBackButtonVisible = true;
         }
     }
 }
