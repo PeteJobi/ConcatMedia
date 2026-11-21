@@ -1,7 +1,8 @@
 # Concat Media
 Using Concat Media, you can merge video or audio files together, provided the files you're merging have the same extensions, codec parameters and number of tracks. Only supports Windows 10 and 11 (not tested on other versions of Windows). Powered by FFMPEG.
 
-<img width="690" height="522" alt="image" src="https://github.com/user-attachments/assets/00bd8bad-bf6a-4c8e-9d42-b358f5b21832" />
+<p align="center"><img width="686" height="514" alt="image" src="https://github.com/user-attachments/assets/e4be9b19-8e2e-42b8-850b-528bc67c28b2" /></p>
+
 
 ## How to build
 You need to have at least .NET 9 runtime installed to build the software. Download the latest runtime [here](https://dotnet.microsoft.com/en-us/download). If you're not sure which one to download, try [.NET 9.0 Version 9.0.203](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-9.0.203-windows-x64-installer)
